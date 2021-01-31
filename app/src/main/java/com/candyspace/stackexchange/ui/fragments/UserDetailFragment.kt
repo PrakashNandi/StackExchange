@@ -10,23 +10,18 @@ import androidx.navigation.fragment.findNavController
 import com.candyspace.stackexchange.R
 
 /**
+ * Created by Prakash Nandi on 30/01/21.
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class UserDetailFragment : Fragment() {
+class UserDetailFragment : BaseFragment() {
 
-    override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_detail, container, false)
+    override fun getLayoutResourceId(): Int {
+        return R.layout.fragment_user_detail
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        view.findViewById<Button>(R.id.button_second).setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+    override fun initWidgets(fragmentView: View) {
+        fragmentView.findViewById<Button>(R.id.button_second).setOnClickListener {
+            findNavController().navigate(R.id.action_UserDetailFragment_to_UserListFragment)
         }
     }
 }
