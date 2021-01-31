@@ -6,7 +6,12 @@ package com.candyspace.stackexchange.interfaces
 interface ToolbarSetter {
 
     /**
-     * to set title for the screen
+     * To set title for the screen
      */
     fun setToolbarTitle(titleText: String)
+
+    /**
+     * To show or hide back button.
+     */
+    fun showBackButton(show: Boolean)
 }

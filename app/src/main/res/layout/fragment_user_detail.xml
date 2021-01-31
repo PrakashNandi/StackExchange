@@ -1,27 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbars="none"
     tools:context=".ui.fragments.UserDetailFragment">
 
-    <TextView
-        android:id="@+id/textview_second"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/button_second"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/button_second"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/previous"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_second" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/userImage"
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="@dimen/dp_200"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_10"
+            app:civ_border_color="@color/black"
+            app:civ_border_width="@dimen/dp_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/usernameTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/userImage"
+            android:layout_marginTop="@dimen/dp_20"
+            android:paddingLeft="@dimen/dp_15"
+            android:text="@string/username"
+            android:textSize="@dimen/sp_25"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/usernameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/usernameTitle"
+            android:layout_toRightOf="@+id/usernameTitle"
+            android:paddingLeft="@dimen/dp_15"
+            android:textSize="@dimen/sp_25" />
+
+        <TextView
+            android:id="@+id/reputationTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/usernameText"
+            android:layout_marginTop="@dimen/dp_10"
+            android:paddingLeft="@dimen/dp_15"
+            android:text="@string/reputation"
+            android:textSize="@dimen/sp_25"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/reputationText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/reputationTitle"
+            android:layout_toRightOf="@+id/reputationTitle"
+            android:paddingLeft="@dimen/dp_15"
+            android:textSize="@dimen/sp_25" />
+
+        <TextView
+            android:id="@+id/badgesTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/reputationText"
+            android:layout_marginTop="@dimen/dp_10"
+            android:paddingLeft="@dimen/dp_15"
+            android:text="@string/badges"
+            android:textSize="@dimen/sp_25"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/badgesText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/badgesTitle"
+            android:layout_toRightOf="@+id/badgesTitle"
+            android:paddingLeft="@dimen/dp_15"
+            android:textSize="@dimen/sp_25" />
+
+        <TextView
+            android:id="@+id/locationTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/badgesText"
+            android:layout_marginTop="@dimen/dp_10"
+            android:paddingLeft="@dimen/dp_15"
+            android:text="@string/location"
+            android:textSize="@dimen/sp_25"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/locationText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/locationTitle"
+            android:layout_toRightOf="@+id/locationTitle"
+            android:paddingLeft="@dimen/dp_15"
+            android:textSize="@dimen/sp_25" />
+
+        <TextView
+            android:id="@+id/ageTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/locationText"
+            android:layout_marginTop="@dimen/dp_10"
+            android:paddingLeft="@dimen/dp_15"
+            android:text="@string/age"
+            android:textSize="@dimen/sp_25"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/ageText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/ageTitle"
+            android:layout_toRightOf="@+id/ageTitle"
+            android:paddingLeft="@dimen/dp_15"
+            android:textSize="@dimen/sp_25" />
+
+        <TextView
+            android:id="@+id/creationDateTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ageText"
+            android:layout_marginTop="@dimen/dp_10"
+            android:paddingLeft="@dimen/dp_15"
+            android:text="@string/creationDate"
+            android:textSize="@dimen/sp_25"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/creationDateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/creationDateTitle"
+            android:layout_toRightOf="@+id/creationDateTitle"
+            android:paddingLeft="@dimen/dp_15"
+            android:textSize="@dimen/sp_25" />
+
+    </RelativeLayout>
+</ScrollView>

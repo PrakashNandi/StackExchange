@@ -1,6 +1,7 @@
 package com.candyspace.stackexchange.ui.fragments
 
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -31,6 +32,8 @@ class UserListFragment : BaseFragment(), UserClickListener, SwipeRefreshLayout.O
     }
 
     override fun initWidgets(fragmentView: View) {
+        setToolbarTitle(getString(R.string.app_name))
+        showBackButton(false)
         val layoutManager = LinearLayoutManager(context)
         usersRecyclerView.layoutManager = layoutManager
         userAdapter = UserAdapter(userList, this)
@@ -45,8 +48,9 @@ class UserListFragment : BaseFragment(), UserClickListener, SwipeRefreshLayout.O
     /**
      * User list screen's item click listener
      */
-    override fun onUserClick(journey: User, position: Int) {
-        findNavController().navigate(R.id.action_UserListFragment_to_UserDetailFragment)
+    override fun onUserClick(user: User, position: Int) {
+        val bundle = bundleOf("USER" to user)
+        findNavController().navigate(R.id.action_UserListFragment_to_UserDetailFragment, bundle)
     }
 
     /**

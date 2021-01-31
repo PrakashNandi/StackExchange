@@ -32,6 +32,14 @@ abstract class BaseFragment : Fragment() {
         toolBarSetter.setToolbarTitle(title)
     }
 
+    /**
+     * to set text for toolbar
+     */
+    protected fun showBackButton(show: Boolean) {
+        val toolBarSetter = activity as ToolbarSetter
+        toolBarSetter.showBackButton(show)
+    }
+
     abstract fun getLayoutResourceId(): Int
 
     abstract fun initWidgets(fragmentView: View)
