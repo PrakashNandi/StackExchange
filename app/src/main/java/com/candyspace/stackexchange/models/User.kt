@@ -9,15 +9,15 @@ class User {
     lateinit var badge_counts: BadgeCounts
     var account_id: Int = 0
     var is_employee: Boolean = false
-    lateinit var last_modified_date: Date
-    lateinit var last_access_date: Date
+    var last_modified_date: Long = 0
+    var last_access_date: Long = 0
     var reputation_change_year: Int = 0
     var reputation_change_quarter: Int = 0
     var reputation_change_month: Int = 0
     var reputation_change_week: Int = 0
     var reputation_change_day: Int = 0
     var reputation: Int = 0
-    lateinit var creation_date: Date
+    var creation_date: Long = 0
     lateinit var user_type: String
     var user_id: Int = 0
     var accept_rate: Int = 0
