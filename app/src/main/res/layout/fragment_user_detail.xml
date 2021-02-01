@@ -31,7 +31,7 @@
             android:layout_marginTop="@dimen/dp_20"
             android:paddingLeft="@dimen/dp_15"
             android:text="@string/username"
-            android:textSize="@dimen/sp_25"
+            android:textSize="@dimen/sp_22"
             android:textStyle="bold" />
 
         <TextView
@@ -41,7 +41,7 @@
             android:layout_alignTop="@+id/usernameTitle"
             android:layout_toRightOf="@+id/usernameTitle"
             android:paddingLeft="@dimen/dp_15"
-            android:textSize="@dimen/sp_25" />
+            android:textSize="@dimen/sp_22" />
 
         <TextView
             android:id="@+id/reputationTitle"
@@ -51,7 +51,7 @@
             android:layout_marginTop="@dimen/dp_10"
             android:paddingLeft="@dimen/dp_15"
             android:text="@string/reputation"
-            android:textSize="@dimen/sp_25"
+            android:textSize="@dimen/sp_22"
             android:textStyle="bold" />
 
         <TextView
@@ -61,7 +61,7 @@
             android:layout_alignTop="@+id/reputationTitle"
             android:layout_toRightOf="@+id/reputationTitle"
             android:paddingLeft="@dimen/dp_15"
-            android:textSize="@dimen/sp_25" />
+            android:textSize="@dimen/sp_22" />
 
         <TextView
             android:id="@+id/badgesTitle"
@@ -71,7 +71,7 @@
             android:layout_marginTop="@dimen/dp_10"
             android:paddingLeft="@dimen/dp_15"
             android:text="@string/badges"
-            android:textSize="@dimen/sp_25"
+            android:textSize="@dimen/sp_22"
             android:textStyle="bold" />
 
         <TextView
@@ -81,7 +81,7 @@
             android:layout_alignTop="@+id/badgesTitle"
             android:layout_toRightOf="@+id/badgesTitle"
             android:paddingLeft="@dimen/dp_15"
-            android:textSize="@dimen/sp_25" />
+            android:textSize="@dimen/sp_22" />
 
         <TextView
             android:id="@+id/locationTitle"
@@ -91,7 +91,7 @@
             android:layout_marginTop="@dimen/dp_10"
             android:paddingLeft="@dimen/dp_15"
             android:text="@string/location"
-            android:textSize="@dimen/sp_25"
+            android:textSize="@dimen/sp_22"
             android:textStyle="bold" />
 
         <TextView
@@ -101,7 +101,7 @@
             android:layout_alignTop="@+id/locationTitle"
             android:layout_toRightOf="@+id/locationTitle"
             android:paddingLeft="@dimen/dp_15"
-            android:textSize="@dimen/sp_25" />
+            android:textSize="@dimen/sp_22" />
 
         <TextView
             android:id="@+id/ageTitle"
@@ -111,7 +111,7 @@
             android:layout_marginTop="@dimen/dp_10"
             android:paddingLeft="@dimen/dp_15"
             android:text="@string/age"
-            android:textSize="@dimen/sp_25"
+            android:textSize="@dimen/sp_22"
             android:textStyle="bold" />
 
         <TextView
@@ -121,7 +121,7 @@
             android:layout_alignTop="@+id/ageTitle"
             android:layout_toRightOf="@+id/ageTitle"
             android:paddingLeft="@dimen/dp_15"
-            android:textSize="@dimen/sp_25" />
+            android:textSize="@dimen/sp_22" />
 
         <TextView
             android:id="@+id/creationDateTitle"
@@ -131,7 +131,7 @@
             android:layout_marginTop="@dimen/dp_10"
             android:paddingLeft="@dimen/dp_15"
             android:text="@string/creationDate"
-            android:textSize="@dimen/sp_25"
+            android:textSize="@dimen/sp_22"
             android:textStyle="bold" />
 
         <TextView
@@ -141,7 +141,7 @@
             android:layout_alignTop="@+id/creationDateTitle"
             android:layout_toRightOf="@+id/creationDateTitle"
             android:paddingLeft="@dimen/dp_15"
-            android:textSize="@dimen/sp_25" />
+            android:textSize="@dimen/sp_22" />
 
     </RelativeLayout>
 </ScrollView>
