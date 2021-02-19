@@ -10,12 +10,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.candyspace.stackexchange.R
+import com.candyspace.stackexchange.api.providers.UsersRepositoryProvider
 import com.candyspace.stackexchange.extensions.setDivider
 import com.candyspace.stackexchange.interfaces.UserClickListener
 import com.candyspace.stackexchange.models.User
 import com.candyspace.stackexchange.ui.adapters.UserAdapter
 import com.candyspace.stackexchange.utils.NetworkUtils.Companion.isInternetAvailable
 import com.candyspace.stackexchange.viewmodel.UsersViewModel
+import com.candyspace.stackexchange.viewmodel.UsersViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_user_list.*
 import kotlinx.coroutines.GlobalScope
@@ -63,7 +65,9 @@ class UserListFragment : BaseFragment(), UserClickListener, TextWatcher {
     }
 
     private fun getAllUsers() {
-        usersViewModel = ViewModelProvider(this).get(UsersViewModel::class.java)
+        val repository = UsersRepositoryProvider
+            .usersRepositoryProvider()
+        usersViewModel = ViewModelProvider(this, UsersViewModelFactory(repository)).get(UsersViewModel::class.java)
         if (isInternetAvailable(requireActivity())) {
             usersViewModel.getUsers().observe(this, Observer { usersResponse ->
                 if (usersResponse.isSuccessful) {
