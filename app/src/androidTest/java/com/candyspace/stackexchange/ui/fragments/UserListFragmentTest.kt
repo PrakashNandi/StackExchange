@@ -63,7 +63,7 @@ class UserListFragmentTest {
     fun init() {
         prepareUserList()
         MockKAnnotations.init(this, relaxUnitFun = true)
-        val usersResponse = UsersResponse(UsersData.userList)
+        val usersResponse = UsersResponse(userList)
         every {
             usersApiService.getUsers("desc", "reputation", "stackoverflow")
         } returns Observable.just(Response.success(usersResponse))
