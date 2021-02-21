@@ -1,43 +1,28 @@
 package com.candyspace.stackexchange.ui.fragments
 
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
-import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.candyspace.stackexchange.R
 import com.candyspace.stackexchange.api.UsersApiService
-import com.candyspace.stackexchange.api.repositories.UsersRepository
-import com.candyspace.stackexchange.mockdata.UsersData
 import com.candyspace.stackexchange.models.BadgeCounts
 import com.candyspace.stackexchange.models.User
 import com.candyspace.stackexchange.models.UsersResponse
 import com.candyspace.stackexchange.ui.MainActivity
 import com.candyspace.stackexchange.ui.adapters.UserAdapter
-import com.candyspace.stackexchange.ui.utils.ViewActionUtils
-import com.candyspace.stackexchange.viewmodel.UsersViewModel
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
-import io.mockk.mockkClass
 import io.reactivex.Observable
-import io.reactivex.Scheduler
-import io.reactivex.android.plugins.RxAndroidPlugins
-import io.reactivex.schedulers.Schedulers
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mock
-import org.mockito.MockitoAnnotations
-import org.mockito.junit.MockitoJUnitRunner
 import retrofit2.Response
 
 /**
@@ -57,7 +42,7 @@ class UserListFragmentTest {
 
     var userList: MutableList<User> = mutableListOf()
 
-    val detailFragmentTitle = "User"
+    private val detailFragmentTitle = "User"
 
     @Before
     fun init() {
