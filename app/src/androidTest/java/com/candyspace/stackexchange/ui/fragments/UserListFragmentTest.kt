@@ -2,6 +2,7 @@ package com.candyspace.stackexchange.ui.fragments
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.pressBack
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.ViewMatchers.*
@@ -9,21 +10,13 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.candyspace.stackexchange.R
-import com.candyspace.stackexchange.api.UsersApiService
-import com.candyspace.stackexchange.models.BadgeCounts
-import com.candyspace.stackexchange.models.User
-import com.candyspace.stackexchange.models.UsersResponse
 import com.candyspace.stackexchange.ui.MainActivity
 import com.candyspace.stackexchange.ui.adapters.UserAdapter
-import io.mockk.MockKAnnotations
-import io.mockk.every
-import io.mockk.impl.annotations.MockK
-import io.reactivex.Observable
+import com.candyspace.stackexchange.ui.utils.ViewActionUtils.Companion.waitFor
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import retrofit2.Response
 
 /**
  * Created by Prakash Nandi on 20/02/21.
@@ -37,97 +30,42 @@ class UserListFragmentTest {
     @get:Rule
     var activityScenarioRule: ActivityScenarioRule<MainActivity> = ActivityScenarioRule(MainActivity::class.java)
 
-    @MockK
-    private lateinit var usersApiService: UsersApiService
-
-    private var userList: MutableList<User> = mutableListOf()
-
+    private val userListToolbarTitle = "Stack Exchange"
     private val detailFragmentTitle = "User"
 
     @Before
     fun init() {
-        prepareUserList()
-        MockKAnnotations.init(this, relaxUnitFun = true)
-        val usersResponse = UsersResponse(userList)
-        every {
-            usersApiService.getUsers("desc", "reputation", "stackoverflow")
-        } returns Observable.just(Response.success(usersResponse))
         activityActivityTestRule.activity.supportFragmentManager.beginTransaction()
     }
 
     @Test
-    fun validateSearchHintText() {
+    fun validateSearchHintText_recycler_view_user_details() {
         onView(withId(R.id.searchUserEt)).check(matches(withHint("Search Username")))
-    }
+        onView(isRoot()).perform(waitFor(200))
 
-    @Test
-    fun test_isRecyclerviewVisible() {
         onView(withId(R.id.usersRecyclerView)).check(matches(isDisplayed()))
-    }
 
-    @Test
-    fun test_selectItem() {
         onView(withId(R.id.usersRecyclerView)).perform(actionOnItemAtPosition<UserAdapter.UserViewHolder>(2, click()))
+
+        // Validate user details data
         onView(withId(R.id.toolbarTitle)).check(matches(withText(detailFragmentTitle)))
-    }
 
-    private fun prepareUserList() {
-        val badgeCount = BadgeCounts()
-        badgeCount.bronze = 8887
-        badgeCount.silver = 8656
-        badgeCount.gold = 785
+        onView(withId(R.id.userImage)).check(matches(isDisplayed()))
+        onView(withId(R.id.usernameTitle)).check(matches(isDisplayed()))
+        onView(withId(R.id.usernameText)).check(matches(isDisplayed()))
+        onView(withId(R.id.reputationTitle)).check(matches(isDisplayed()))
+        onView(withId(R.id.reputationText)).check(matches(isDisplayed()))
+        onView(withId(R.id.badgesTitle)).check(matches(isDisplayed()))
+        onView(withId(R.id.badgesText)).check(matches(isDisplayed()))
+        onView(withId(R.id.locationTitle)).check(matches(isDisplayed()))
+        onView(withId(R.id.locationText)).check(matches(isDisplayed()))
+        onView(withId(R.id.ageTitle)).check(matches(isDisplayed()))
+        onView(withId(R.id.ageText)).check(matches(isDisplayed()))
+        onView(withId(R.id.creationDateTitle)).check(matches(isDisplayed()))
+        onView(withId(R.id.creationDateText)).check(matches(isDisplayed()))
+        onView(isRoot()).perform(waitFor(200))
 
-        val user = User()
-        user.badge_counts = badgeCount
-        user.account_id = 11683
-        user.is_employee = false
-        user.last_modified_date = 1613736300
-        user.last_access_date = 1613736300
-        user.reputation_change_year = 10285
-        user.reputation_change_quarter = 10285
-        user.reputation_change_month = 4040
-        user.reputation_change_week = 1380
-        user.reputation_change_day = 200
-        user.reputation = 1240975
-        user.creation_date = 1222430705
-        user.user_type = "registered"
-        user.user_id = 22656
-        user.accept_rate = 86
-        user.location = "Woking, UK"
-        user.website_url = "http://csharpindepth.com"
-        user.link = "https://stackoverflow.com/users/22656/jon-skeet"
-        user.profile_image = "https://www.gravatar.com/avatar/6d8ebb117e8d83d74ea95fbdd0f87e13?s=128&d=identicon&r=PG"
-        user.display_name = "Jon Skeet"
-
-        userList.add(user)
-
-        val badgeCount1 = BadgeCounts()
-        badgeCount.bronze = 8887
-        badgeCount.silver = 8656
-        badgeCount.gold = 785
-
-        val user1 = User()
-        user.badge_counts = badgeCount1
-        user.account_id = 11700
-        user.is_employee = false
-        user.last_modified_date = 1613736300
-        user.last_access_date = 1613736300
-        user.reputation_change_year = 10285
-        user.reputation_change_quarter = 10285
-        user.reputation_change_month = 4040
-        user.reputation_change_week = 1380
-        user.reputation_change_day = 200
-        user.reputation = 1240975
-        user.creation_date = 1222430705
-        user.user_type = "registered"
-        user.user_id = 22659
-        user.accept_rate = 86
-        user.location = "Woking, UK"
-        user.website_url = "http://csharpindepth.com"
-        user.link = "https://stackoverflow.com/users/22656/jon-skeet"
-        user.profile_image = "https://www.gravatar.com/avatar/6d8ebb117e8d83d74ea95fbdd0f87e13?s=128&d=identicon&r=PG"
-        user.display_name = "Robert Parker"
-
-        userList.add(user1)
+        onView(isRoot()).perform(pressBack())
+        onView(withId(R.id.toolbarTitle)).check(matches(withText(userListToolbarTitle)))
     }
 }

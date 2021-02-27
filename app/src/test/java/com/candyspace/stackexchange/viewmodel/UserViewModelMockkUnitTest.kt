@@ -57,7 +57,7 @@ class UsersViewModelMockkUnitTest {
     fun givenServerResponse200_whenFetch_shouldReturnSuccess() {
         testCoroutineRule.runBlockingTest {
             val response = Response.success(UsersResponse(userList))
-            coEvery {
+            every {
                 repository.getUsers()
             } returns Observable.just(response)
 
