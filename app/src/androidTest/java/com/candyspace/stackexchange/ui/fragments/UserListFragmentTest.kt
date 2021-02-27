@@ -40,7 +40,7 @@ class UserListFragmentTest {
     @MockK
     private lateinit var usersApiService: UsersApiService
 
-    var userList: MutableList<User> = mutableListOf()
+    private var userList: MutableList<User> = mutableListOf()
 
     private val detailFragmentTitle = "User"
 
