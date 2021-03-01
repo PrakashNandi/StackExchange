@@ -1,5 +1,6 @@
 package com.candyspace.stackexchange.ui.fragments
 
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.pressBack
@@ -45,27 +46,35 @@ class UserListFragmentTest {
 
         onView(withId(R.id.usersRecyclerView)).check(matches(isDisplayed()))
 
-        onView(withId(R.id.usersRecyclerView)).perform(actionOnItemAtPosition<UserAdapter.UserViewHolder>(2, click()))
+        if (getRecyclerViewCount() > 0) {
+            onView(withId(R.id.usersRecyclerView)).perform(actionOnItemAtPosition<UserAdapter.UserViewHolder>(2, click()))
 
-        // Validate user details data
-        onView(withId(R.id.toolbarTitle)).check(matches(withText(detailFragmentTitle)))
+            // Validate user details data
+            onView(withId(R.id.toolbarTitle)).check(matches(withText(detailFragmentTitle)))
 
-        onView(withId(R.id.userImage)).check(matches(isDisplayed()))
-        onView(withId(R.id.usernameTitle)).check(matches(isDisplayed()))
-        onView(withId(R.id.usernameText)).check(matches(isDisplayed()))
-        onView(withId(R.id.reputationTitle)).check(matches(isDisplayed()))
-        onView(withId(R.id.reputationText)).check(matches(isDisplayed()))
-        onView(withId(R.id.badgesTitle)).check(matches(isDisplayed()))
-        onView(withId(R.id.badgesText)).check(matches(isDisplayed()))
-        onView(withId(R.id.locationTitle)).check(matches(isDisplayed()))
-        onView(withId(R.id.locationText)).check(matches(isDisplayed()))
-        onView(withId(R.id.ageTitle)).check(matches(isDisplayed()))
-        onView(withId(R.id.ageText)).check(matches(isDisplayed()))
-        onView(withId(R.id.creationDateTitle)).check(matches(isDisplayed()))
-        onView(withId(R.id.creationDateText)).check(matches(isDisplayed()))
-        onView(isRoot()).perform(waitFor(200))
+            onView(withId(R.id.userImage)).check(matches(isDisplayed()))
+            onView(withId(R.id.usernameTitle)).check(matches(isDisplayed()))
+            onView(withId(R.id.usernameText)).check(matches(isDisplayed()))
+            onView(withId(R.id.reputationTitle)).check(matches(isDisplayed()))
+            onView(withId(R.id.reputationText)).check(matches(isDisplayed()))
+            onView(withId(R.id.badgesTitle)).check(matches(isDisplayed()))
+            onView(withId(R.id.badgesText)).check(matches(isDisplayed()))
+            onView(withId(R.id.locationTitle)).check(matches(isDisplayed()))
+            onView(withId(R.id.locationText)).check(matches(isDisplayed()))
+            onView(withId(R.id.ageTitle)).check(matches(isDisplayed()))
+            onView(withId(R.id.ageText)).check(matches(isDisplayed()))
+            onView(withId(R.id.creationDateTitle)).check(matches(isDisplayed()))
+            onView(withId(R.id.creationDateText)).check(matches(isDisplayed()))
+            onView(isRoot()).perform(waitFor(200))
 
-        onView(isRoot()).perform(pressBack())
-        onView(withId(R.id.toolbarTitle)).check(matches(withText(userListToolbarTitle)))
+            onView(isRoot()).perform(pressBack())
+            onView(withId(R.id.toolbarTitle)).check(matches(withText(userListToolbarTitle)))
+        }
+    }
+
+    private fun getRecyclerViewCount(): Int {
+        val recyclerView =
+            activityActivityTestRule.activity.findViewById(R.id.usersRecyclerView) as RecyclerView
+        return recyclerView.adapter!!.itemCount
     }
 }
