@@ -45,9 +45,11 @@ class UserListFragmentTest {
         onView(isRoot()).perform(waitFor(200))
 
         onView(withId(R.id.usersRecyclerView)).check(matches(isDisplayed()))
+        onView(isRoot()).perform(waitFor(200))
 
         if (getRecyclerViewCount() > 0) {
             onView(withId(R.id.usersRecyclerView)).perform(actionOnItemAtPosition<UserAdapter.UserViewHolder>(2, click()))
+            onView(isRoot()).perform(waitFor(200))
 
             // Validate user details data
             onView(withId(R.id.toolbarTitle)).check(matches(withText(detailFragmentTitle)))
